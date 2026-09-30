@@ -20,14 +20,11 @@ aube dlx sv@0.17.1 create --template minimal --types ts --add prettier drizzle="
 
 ## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Open the repository in the `.devcontainer` with VS Code and the Dev Containers extension. The development container includes Node.js and starts the PostgreSQL service; this setup also works with a rootless Podman Compose provider.
 
-```sh
-npm run dev
+Use the VS Code task palette (`Tasks: Run Task`) to start or stop the dev server, or check that it is responding. Port 5173 is forwarded and opens in your browser when the server starts. The database is available in the container at `db:5432` and from the host at `localhost:5432`.
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+For development directly on the host, install dependencies with `npm install` and run `npm run dev`.
 
 ## Building
 

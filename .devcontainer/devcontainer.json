@@ -1,0 +1,16 @@
+{
+	"name": "team-diagnose",
+	"dockerComposeFile": "../compose.yaml",
+	"service": "node",
+	"runServices": ["db", "node"],
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+	"remoteUser": "root",
+	"forwardPorts": [5173],
+	"portsAttributes": {
+		"5173": {
+			"label": "SvelteKit dev server",
+			"onAutoForward": "openBrowser"
+		}
+	},
+	"postCreateCommand": "if [ ! -f .env ]; then cp .env.example .env; fi && sed -i 's/@localhost:5432\\//@db:5432\\//' .env && npm install"
+}

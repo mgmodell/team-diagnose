@@ -1,0 +1,34 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Start dev server",
+			"type": "shell",
+			"command": "sh -c 'echo $$ > /tmp/team-diagnose-vite.pid; exec ./node_modules/.bin/vite dev --host 0.0.0.0'",
+			"isBackground": true,
+			"problemMatcher": {
+				"owner": "custom",
+				"pattern": {
+					"regexp": "."
+				},
+				"background": {
+					"activeOnStart": true,
+					"beginsPattern": ".",
+					"endsPattern": "Local:.*http://"
+				}
+			}
+		},
+		{
+			"label": "Stop dev server",
+			"type": "shell",
+			"command": "node -e \"const fs=require('node:fs');const f='/tmp/team-diagnose-vite.pid';if(fs.existsSync(f)){const pid=Number(fs.readFileSync(f,'utf8'));try{if(fs.readFileSync('/proc/'+pid+'/cmdline','utf8').includes('vite'))process.kill(pid,'SIGINT')}catch(e){if(e.code!=='ENOENT'&&e.code!=='ESRCH')throw e}fs.rmSync(f,{force:true})}\"",
+			"problemMatcher": []
+		},
+		{
+			"label": "Check dev server",
+			"type": "shell",
+			"command": "node -e \"fetch('http://localhost:5173').then(r => { console.log(r.status); process.exit(r.ok ? 0 : 1) }).catch(() => process.exit(1))\"",
+			"problemMatcher": []
+		}
+	]
+}
