@@ -1,0 +1,16 @@
+{
+	"name": "team-diagnose",
+	"dockerComposeFile": "../compose.yaml",
+	"service": "node",
+	"runServices": ["db", "node"],
+	"workspaceFolder": "/workspaces/team-diagnose",
+	"remoteUser": "root",
+	"forwardPorts": [5173],
+	"portsAttributes": {
+		"5173": {
+			"label": "SvelteKit dev server",
+			"onAutoForward": "openBrowser"
+		}
+	},
+	"postCreateCommand": "bash .devcontainer/post-create.sh"
+}
