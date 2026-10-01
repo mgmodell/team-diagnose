@@ -12,5 +12,5 @@ fi
 if grep -q '@localhost:5432/' .env; then
 	sed -i 's#@localhost:5432/#@db:5432/#' .env
 fi
-npm install -g --ignore-scripts=false @endevco/aube@1.5.1
+npm install -g @endevco/aube@1.5.1
 aube ci
