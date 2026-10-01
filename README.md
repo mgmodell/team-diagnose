@@ -24,7 +24,7 @@ Open the repository in the `.devcontainer` with VS Code and the Dev Containers e
 
 Use the VS Code task palette (`Tasks: Run Task`) to start or stop the dev server, or check that it is responding. Port 5173 is forwarded and opens in your browser when the server starts. The database is available in the container at `db:5432` and from the host at `localhost:5432`.
 
-For development directly on the host, install dependencies with `npm install` and run `npm run dev`.
+For development directly on the host, install the tools from `mise.toml`, run `aube ci` to install the locked dependencies, and start the server with `npm run dev`.
 
 ## Building
 
