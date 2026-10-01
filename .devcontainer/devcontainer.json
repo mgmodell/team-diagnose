@@ -3,7 +3,7 @@
 	"dockerComposeFile": "../compose.yaml",
 	"service": "node",
 	"runServices": ["db", "node"],
-	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+	"workspaceFolder": "/workspaces/team-diagnose",
 	"remoteUser": "root",
 	"forwardPorts": [5173],
 	"portsAttributes": {
