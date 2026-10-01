@@ -26,6 +26,8 @@ Use the VS Code task palette (`Tasks: Run Task`) to start or stop the dev server
 
 For development directly on the host, install the tools from `mise.toml`, run `aube ci` to install the locked dependencies, and start the server with `npm run dev`.
 
+Use Aube for project dependency changes so `package.json` and `aube-lock.yaml` stay in sync. For example, add a development dependency with `aube add -D <package>`. `drizzle-kit` is already declared in this project's `devDependencies`; after `aube ci`, it is available for the database scripts. Avoid using `npm install` to manage project dependencies here.
+
 ## Building
 
 To create a production version of your app:
