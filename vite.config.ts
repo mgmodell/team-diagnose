@@ -1,14 +1,15 @@
 import { paraglideVitePlugin } from '@inlang/paraglide-js';
 import adapter from '@sveltejs/adapter-auto';
 import { sveltekit } from '@sveltejs/kit/vite';
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
 	plugins: [
 		sveltekit({
 			compilerOptions: {
 				// Force runes mode for the project, except for libraries. Can be removed in svelte 6.
-				runes: ({ filename }) => filename.split(/[/\\]/).includes('node_modules') ? undefined : true
+				runes: ({ filename }) =>
+					filename.split(/[/\\]/).includes('node_modules') ? undefined : true
 			},
 
 			// adapter-auto only supports some environments, see https://svelte.dev/docs/kit/adapter-auto for a list.
@@ -28,5 +29,10 @@ export default defineConfig({
 			outdir: './src/lib/paraglide',
 			emitTsDeclarations: true
 		})
-	]
+	],
+
+	// Vitest unit tests live next to the code they test (*.test.ts)
+	test: {
+		include: ['src/**/*.test.ts']
+	}
 });

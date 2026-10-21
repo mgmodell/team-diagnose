@@ -8,6 +8,13 @@
       "when": 1790860975786,
       "tag": "0000_empty_thing",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1792548548819,
+      "tag": "0001_wakeful_vanisher",
+      "breakpoints": true
     }
   ]
 }
