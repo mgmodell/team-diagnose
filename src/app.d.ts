@@ -4,7 +4,8 @@ import type { User, Session } from 'better-auth';
 // for information about these interfaces
 declare global {
 	namespace App {
-		interface Locals { user?: User; session?: Session }
+		// startYear is our custom demographic field (see additionalFields in $lib/server/auth.ts)
+		interface Locals { user?: User & { startYear?: number | null }; session?: Session }
 
 		// interface Error {}
 		// interface PageData {}

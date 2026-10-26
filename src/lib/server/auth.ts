@@ -16,6 +16,13 @@ export const auth = betterAuth({
 			clientSecret: env.GOOGLE_CLIENT_SECRET
 		}
 	},
+	user: {
+		// Extra demographic column on the user table. `input: true` lets us set it
+		// through auth.api.updateUser from the profile form.
+		additionalFields: {
+			startYear: { type: 'number', required: false, input: true }
+		}
+	},
 	plugins: [
 		sveltekitCookies(getRequestEvent) // make sure this is the last plugin in the array
 	]
