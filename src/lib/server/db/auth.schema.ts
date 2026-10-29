@@ -9,6 +9,8 @@ export const user = pgTable("user", {
   image: text("image"),
   // Demographic: year the user started college. Null until they complete the profile form.
   startYear: integer("start_year"),
+  // Null means the user has not answered the study consent question yet.
+  studyConsent: boolean("study_consent"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at")
     .defaultNow()

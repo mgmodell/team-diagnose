@@ -5,7 +5,7 @@
 	let { data, form }: PageProps = $props();
 </script>
 
-<h1>Tell us about yourself</h1>
+<h1>Demographics</h1>
 
 <form method="post" action="?/save" use:enhance>
 	<label>
