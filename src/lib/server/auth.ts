@@ -20,7 +20,8 @@ export const auth = betterAuth({
 		// Extra demographic column on the user table. `input: true` lets us set it
 		// through auth.api.updateUser from the profile form.
 		additionalFields: {
-			startYear: { type: 'number', required: false, input: true }
+			startYear: { type: 'number', required: false, input: true },
+			studyConsent: { type: 'boolean', required: false, input: true }
 		}
 	},
 	plugins: [

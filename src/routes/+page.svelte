@@ -10,7 +10,13 @@
 <h1>Diagnosing Teams</h1>
 
 {#if data.user}
-	<p>Welcome, {data.user.name}! You started college in {data.user.startYear}.</p>
+	<p>Welcome, {data.user.name}!</p>
+	{#if data.user.studyConsent}
+		<a href="/instructions">Begin the study</a>
+	{:else}
+		<p>You have declined to participate in the study.</p>
+		<a href="/consent">Change your response</a>
+	{/if}
 	<form method="post" action="?/signOut" use:enhance>
 		<button type="submit">Sign out</button>
 	</form>

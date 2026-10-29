@@ -6,12 +6,15 @@ import { validateProfile } from '$lib/profile';
 export const load: PageServerLoad = ({ locals }) => {
 	// Only signed-in users may see this page.
 	if (!locals.user) return redirect(302, '/');
+	if (locals.user.studyConsent !== true) return redirect(302, '/consent');
+	if (locals.user.startYear != null) return redirect(302, '/');
 	return { user: locals.user };
 };
 
 export const actions: Actions = {
 	save: async ({ request, locals }) => {
 		if (!locals.user) return redirect(302, '/');
+		if (locals.user.studyConsent !== true) return redirect(302, '/consent');
 
 		const formData = await request.formData();
 		const name = formData.get('name');

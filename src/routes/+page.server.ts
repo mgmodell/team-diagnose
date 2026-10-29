@@ -6,10 +6,11 @@ import { isProfileComplete } from '$lib/profile';
 // `load` runs on the server before the page renders; its return value becomes
 // the `data` prop of +page.svelte.
 export const load: PageServerLoad = ({ locals }) => {
-	// Signed in but demographics missing (e.g. brand-new Google account):
-	// send them to the profile form.
-	if (locals.user && !isProfileComplete(locals.user)) {
-		return redirect(302, '/profile');
+	if (locals.user) {
+		if (locals.user.studyConsent == null) return redirect(302, '/consent');
+		if (locals.user.studyConsent && !isProfileComplete(locals.user)) {
+			return redirect(302, '/profile');
+		}
 	}
 	return { user: locals.user ?? null };
 };
